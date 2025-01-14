@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$HACKER</title>
+  <link rel="icon" href=
+  "logo.jpg"
+          type="image/x-icon" />
+  </head>
+  <style>
+    /* General reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      background: #101010;
+      color: whitesmoke;
+      position: relative;
+      z-index: 1;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Add a pseudo-element for the background effects */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('hack.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.5) blur(2px); /* Darken and blur the image */
+      z-index: -1; /* Place it behind the content */
+    }
+
+    body.dark-mode::before {
+  background-image: url('hack2.jpg'); /* Dark mode image */
+}
+    /* Add the GIFs container */
+    .gif-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+    
+     
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      z-index: -1;
+    }
+
+    .gif-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin: 5px 0;
+    }
+
+    .gif-container img:hover {
+  transform: scale(1.1) rotate(5deg); /* Slight zoom and rotation */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6); /* Green glow effect */
+}
+
+    #container {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .copy-link {
+      color: #ff4500;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .copy-link:hover {
+      color: #ff6347;
+      text-shadow: 0 0 10px #ff6347;
+    }
+
+    .socials {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      color: #00ff00;
+      font-size: 1.2rem;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .socials a:hover {
+      background: #ff4500;
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.7);
+      color: #101010;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      background: #ff4500;
+      transform: scale(1.1);
+    }
+
+    /* Dark mode styles */
+    .dark-mode {
+      background: #f4f4f4;
+      color: red;
+
+    }
+
+    .dark-mode .copy-link {
+      color: darkgreen;
+    }
+
+    .dark-mode .socials a {
+      background: rgba(255, 255, 255, 0.7);
+      color: #101010;
+    }
+
+    .dark-mode .socials a:hover {
+      background: #0000ff;
+      color: #fff;
+    }
+
+    .dark-mode .dark-mode-toggle {
+      background: #101010;
+      color: #00ff00;
+    }
+
+    /* Sun-Moon Animation */
+    .dark-mode-toggle .icon {
+      transition: transform 0.3s ease;
+    }
+
+    .dark-mode .dark-mode-toggle .icon {
+      transform: rotate(180deg);
+    }
+
+    #message {
+      position: fixed;
+      bottom: 6rem;
+      right: 1rem;
+      background: #00ff00;
+      color: #101010;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    #message.visible {
+      opacity: 1;
+    }
+
+    @media screen and (max-width: 768px) {
+    body::before {
+      background-image: url('HACKER.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Modify the gif-container for smaller screens */
+    .gif-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top:350px;
+      gap: 10px;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+      padding: 10px;
+    }
+
+    .gif-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+
+    /* Top GIF grid */
+    .gif-container.top {
+      position: absolute;
+      top: 10%;
+      left: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    /* Bottom GIF grid */
+    .gif-container.bottom {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="socials">
+    <a href="https://x.com/cute08888?t=gS3P_TAskcrn1HcCXmCy4w&s=09" target="_blank" title="Twitter">𝕏</a>
+  
+  </div>
+
+  <div id="container">
+    <h1>$Hacker</h1>
+    <p>
+      <span class="copy-link" onclick="copyToClipboard()">86T1nveW7Xn8sBMwsuEwpuMdamDbWWUjuEwMXEw5pump
+      </span>
+    </p>
+  </div>
+
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <span class="icon">🌙</span>
+  </button>
+
+  <div id="message">Copied to clipboard!</div>
+
+  <!-- GIF container -->
+  <div class="gif-container" style="width:150px;">
+    <img src="error-404.gif" alt="Hacker GIF 1">
+    <img src="HACKER2.gif" alt="Hacker GIF 2">
+    <img src="HACKER3.gif" alt="Hacker GIF 3">
+    <img src="HACKER4.gif" alt="Hacker GIF 4">
+    
+  </div>
+
+  <script>
+    function copyToClipboard() {
+      const text = "CANKciNUFnuJfWPc4jxzrPyJaR7gBpuNSyRdd6ULpump";
+      navigator.clipboard.writeText(text).then(() => {
+        const message = document.getElementById('message');
+        message.classList.add('visible');
+        setTimeout(() => message.classList.remove('visible'), 2000);
+      });
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
