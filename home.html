@@ -206,36 +206,68 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      height: 1100px;
+      width: 525px;
+      overflow: hidden;
+    }
+    #container {
+      text-align: center;
+      padding: 1.5rem;
+      margin-left: 150px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     }
 
+    .copy-link {
+      color: #ff4500;
+      text-decoration: none;
+      font-size: 1.0rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .copy-link:hover {
+      color: #ff6347;
+      text-shadow: 0 0 10px #ff6347;
+    }
     /* Modify the gif-container for smaller screens */
     .gif-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      margin-top:350px;
-      gap: 10px;
+      margin-top:550px;
       position: absolute;
       width: 100%;
       z-index: -1;
       padding: 10px;
+      gap: 90px;
+      
     }
 
     .gif-container img {
-      width: 100%;
+      width: 500%;
       height: auto;
       object-fit: contain;
       border-radius: 5px;
     }
 
     /* Top GIF grid */
-    .gif-container.top {
+    .gif-container.top1 {
+      position: absolute;
+ 
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    
+    }
+    .gif-container.top2 {
       position: absolute;
       top: 10%;
       left: 0;
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 0px;
     }
 
     /* Bottom GIF grid */
@@ -273,8 +305,8 @@
 
   <!-- GIF container -->
   <div class="gif-container" style="width:150px;">
-    <img src="error-404.gif" alt="Hacker GIF 1">
-    <img src="HACKER2.gif" alt="Hacker GIF 2">
+    <img classs="top1"src="error-404.gif" alt="Hacker GIF 1">
+    <img class="top2"src="HACKER2.gif" alt="Hacker GIF 2">
     <img src="HACKER3.gif" alt="Hacker GIF 3">
     <img src="HACKER4.gif" alt="Hacker GIF 4">
     
@@ -282,7 +314,7 @@
 
   <script>
     function copyToClipboard() {
-      const text = "CANKciNUFnuJfWPc4jxzrPyJaR7gBpuNSyRdd6ULpump";
+      const text = "86T1nveW7Xn8sBMwsuEwpuMdamDbWWUjuEwMXEw5pump";
       navigator.clipboard.writeText(text).then(() => {
         const message = document.getElementById('message');
         message.classList.add('visible');
